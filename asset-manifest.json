@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Japan-Travel/static/css/main.b3ceaba7.chunk.css",
+    "main.js": "/Japan-Travel/static/js/main.e5f73444.chunk.js",
+    "main.js.map": "/Japan-Travel/static/js/main.e5f73444.chunk.js.map",
+    "runtime-main.js": "/Japan-Travel/static/js/runtime-main.b856e4bd.js",
+    "runtime-main.js.map": "/Japan-Travel/static/js/runtime-main.b856e4bd.js.map",
+    "static/js/2.bd975fd6.chunk.js": "/Japan-Travel/static/js/2.bd975fd6.chunk.js",
+    "static/js/2.bd975fd6.chunk.js.map": "/Japan-Travel/static/js/2.bd975fd6.chunk.js.map",
+    "static/js/3.14458d49.chunk.js": "/Japan-Travel/static/js/3.14458d49.chunk.js",
+    "static/js/3.14458d49.chunk.js.map": "/Japan-Travel/static/js/3.14458d49.chunk.js.map",
+    "index.html": "/Japan-Travel/index.html",
+    "static/css/main.b3ceaba7.chunk.css.map": "/Japan-Travel/static/css/main.b3ceaba7.chunk.css.map",
+    "static/js/2.bd975fd6.chunk.js.LICENSE.txt": "/Japan-Travel/static/js/2.bd975fd6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b856e4bd.js",
+    "static/js/2.bd975fd6.chunk.js",
+    "static/css/main.b3ceaba7.chunk.css",
+    "static/js/main.e5f73444.chunk.js"
+  ]
+}
