@@ -60,6 +60,21 @@ function App() {
     oneCallForecast(35.689499, 139.691711);
     CallFourSquare(35.689499, 139.691711);
     
+  //   const promise = new Promise((resolve, reject) => {
+  //     oneCallForecast(35.689499, 139.691711);
+  //     CallFourSquare(35.689499, 139.691711);
+  //   })
+  //   promise.then(res => {
+  //     cities['Tokyo'] = { lat: 35.689499, lng: 139.691711, name: "Tokyo",
+  //       weather: fillWeather(apiWeathers, 'Tokyo'), foreCast: fillForecast(apiWeathers, 'Tokyo')
+  //     }
+  //     setCities(cities);
+  //     setCleanFSItems(fillFoursquare(fsItems));
+  //     setSelectedCity(cities['Tokyo']);
+  //     console.log("made it here");
+  // })
+
+    
   }, [])
 
   function CallFourSquare(lat: number | null, lng: number | null) {
@@ -109,7 +124,7 @@ function App() {
   
   const cityNames = Object.keys(cities);
 
-  let [ selectedCity, setSelectedCity ] = React.useState<cityType>(
+  const [ selectedCity, setSelectedCity ] = React.useState<cityType>(
     {
     lat: 35.689499, lng: 139.691711, name: "Tokyo", weather: emptyWeatherType, foreCast: emptyForeCast
     }
@@ -161,20 +176,14 @@ function App() {
               || cleanFSItems[0].name === "") {
                 CallFourSquare(cities[cStats].lat, cities[cStats].lng);
                 oneCallForecast(cities[cStats].lat, cities[cStats].lng);
-                {
-                  cities[cStats] = {lat: cities[cStats].lat, lng: cities[cStats].lng, name: cities[cStats].name,
-                  weather: fillWeather(apiWeathers, cities[cStats].name), foreCast: fillForecast(apiWeathers, cities[cStats].name)};
-                  // cities[cStats].weather = fillWeather(apiWeathers, cities[cStats].name);
-                  // cities[cStats].foreCast = fillForecast(apiWeathers, cities[cStats].name);
-                  // cities[cStats].foursquarePlaces = fillFoursquare(fsItems);
-                  // setCleanFSItems(fillFoursquare(fsItems));
-                  
-                }
+                
+                cities[cStats] = {lat: cities[cStats].lat, lng: cities[cStats].lng, name: cities[cStats].name,
+                weather: fillWeather(apiWeathers, cities[cStats].name), foreCast: fillForecast(apiWeathers, cities[cStats].name)};
+
                 setCities(cities);
               }
               setCleanFSItems(fillFoursquare(fsItems));
-              selectedCity = cities[cStats];
-              setSelectedCity(selectedCity);
+              setSelectedCity(cities[cStats]);
             }}
             icon={{
               url: "/city.svg",
