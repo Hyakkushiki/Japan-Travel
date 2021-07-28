@@ -1,10 +1,14 @@
+export interface coords {
+  lat: number;
+  lng: number;
+}
+
 export interface cityType {
-    lat: number;
-    lng: number;
-    name: string;
-    weather: weatherType;
-    foreCast: foreCast[];
-    // foursquarePlaces: foursquareType[];
+    coords: coords;
+    name?: string;
+    currWeather?: weatherType;
+    foreCast?: foreCast[];
+    foursquarePlaces?: foursquareType[];
   }
 
 export interface city {
@@ -16,7 +20,7 @@ export interface weatherType {
     description: string;
     icon: string;
     temp: number;
-    city: string;
+    city?: string;
     time?: string;
     date: number;
   }
@@ -30,11 +34,15 @@ export interface foreCast {
     date: number;
   }
 
+  export interface weatherBlend {
+    weatherType: weatherType;
+    foreCast: foreCast[];
+  }
+
   export interface foursquareType {
     name: string;
     cat: string;
-    lat: number;
-    lng: number;
+    coords: coords;
     address: string;
     icon: string;
   }
