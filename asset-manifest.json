@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Japan-Travel/static/css/main.fbf62b36.chunk.css",
-    "main.js": "/Japan-Travel/static/js/main.77e21be6.chunk.js",
-    "main.js.map": "/Japan-Travel/static/js/main.77e21be6.chunk.js.map",
-    "runtime-main.js": "/Japan-Travel/static/js/runtime-main.222d0f8b.js",
-    "runtime-main.js.map": "/Japan-Travel/static/js/runtime-main.222d0f8b.js.map",
-    "static/js/2.cf3d09bb.chunk.js": "/Japan-Travel/static/js/2.cf3d09bb.chunk.js",
-    "static/js/2.cf3d09bb.chunk.js.map": "/Japan-Travel/static/js/2.cf3d09bb.chunk.js.map",
-    "static/js/3.1616c259.chunk.js": "/Japan-Travel/static/js/3.1616c259.chunk.js",
-    "static/js/3.1616c259.chunk.js.map": "/Japan-Travel/static/js/3.1616c259.chunk.js.map",
+    "main.css": "/Japan-Travel/static/css/main.8b3f7bd6.chunk.css",
+    "main.js": "/Japan-Travel/static/js/main.4e30fa59.chunk.js",
+    "main.js.map": "/Japan-Travel/static/js/main.4e30fa59.chunk.js.map",
+    "runtime-main.js": "/Japan-Travel/static/js/runtime-main.a0a1fa99.js",
+    "runtime-main.js.map": "/Japan-Travel/static/js/runtime-main.a0a1fa99.js.map",
+    "static/js/2.0133c63c.chunk.js": "/Japan-Travel/static/js/2.0133c63c.chunk.js",
+    "static/js/2.0133c63c.chunk.js.map": "/Japan-Travel/static/js/2.0133c63c.chunk.js.map",
+    "static/js/3.1ee43079.chunk.js": "/Japan-Travel/static/js/3.1ee43079.chunk.js",
+    "static/js/3.1ee43079.chunk.js.map": "/Japan-Travel/static/js/3.1ee43079.chunk.js.map",
     "index.html": "/Japan-Travel/index.html",
-    "static/css/main.fbf62b36.chunk.css.map": "/Japan-Travel/static/css/main.fbf62b36.chunk.css.map",
-    "static/js/2.cf3d09bb.chunk.js.LICENSE.txt": "/Japan-Travel/static/js/2.cf3d09bb.chunk.js.LICENSE.txt"
+    "static/css/main.8b3f7bd6.chunk.css.map": "/Japan-Travel/static/css/main.8b3f7bd6.chunk.css.map",
+    "static/js/2.0133c63c.chunk.js.LICENSE.txt": "/Japan-Travel/static/js/2.0133c63c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.222d0f8b.js",
-    "static/js/2.cf3d09bb.chunk.js",
-    "static/css/main.fbf62b36.chunk.css",
-    "static/js/main.77e21be6.chunk.js"
+    "static/js/runtime-main.a0a1fa99.js",
+    "static/js/2.0133c63c.chunk.js",
+    "static/css/main.8b3f7bd6.chunk.css",
+    "static/js/main.4e30fa59.chunk.js"
   ]
 }
