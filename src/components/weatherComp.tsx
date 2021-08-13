@@ -1,9 +1,10 @@
 import './weatherComp.css';
-import { cityType, foursquareType} from "../interfaces";
+import { CityType } from "../interfaces";
 import { useEffect } from 'react';
+import MainInfoBox from './MainInfoBox';
 
 interface Props {
-  city: cityType;
+  city: CityType;
 }
 
 function WeatherComp(props: Props) {
@@ -16,11 +17,12 @@ function WeatherComp(props: Props) {
   <div className="uber-container">
 
     <div className="top-container">
-      <div className="current-weather-time">
+      {/* <MainInfoBox /> */}
+      {/* <div className="current-weather-time">
           <div className="date-container">
               { !!props.city.currWeather ? (<div className="time"> {props.city.currWeather.time} </div>)
               : <div></div> }
-              {/* <div className="date"> Monday, 25 May </div> */}
+              
               <div className="others">Asia/Tokyo, JP</div>
           </div>
 
@@ -32,12 +34,12 @@ function WeatherComp(props: Props) {
                 <div className="description">{props.city.currWeather.description}</div>
                 <div className="temp">Temperature: {props.city.currWeather.temp}&deg; C</div>
             </div>
-            {/* <div className="day">{props.city.weather.date}日</div> */}
+            
           </div>
           ) : null
           }
 
-      </div>
+      </div> */}
     </div>
     
     <div className="mid-container">

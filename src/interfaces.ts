@@ -1,48 +1,48 @@
-export interface coords {
+export interface Coords {
   lat: number;
   lng: number;
 }
 
-export interface cityType {
-    coords: coords;
-    name?: string;
-    currWeather?: weatherType;
-    foreCast?: foreCast[];
-    foursquarePlaces?: foursquareType[];
-  }
+export interface CityType {
+  coords: Coords;
+  name?: string;
+  currWeather?: WeatherType;
+  foreCast?: ForeCast[];
+  foursquarePlaces?: FoursquareType[];
+}
 
-export interface city {
-    // Tokyo: cityType | null;
-    [key: string]: cityType;
-  }
+export interface City {
+  // Tokyo: cityType | null;
+  [key: string]: CityType;
+}
 
-export interface weatherType {
-    description: string;
-    icon: string;
-    temp: number;
-    city?: string;
-    time?: string;
-    date: number;
-  }
+export interface WeatherType {
+  description: string;
+  icon: string;
+  temp: number;
+  city?: string;
+  time?: string;
+  date: number;
+}
 
-export interface foreCast {
-    description: string;
-    icon: string;
-    temp: number;
-    city: string;
-    day?: number;
-    date: number;
-  }
+export interface ForeCast {
+  description: string;
+  icon: string;
+  temp: number;
+  city: string;
+  day?: number;
+  date: number;
+}
 
-  export interface weatherBlend {
-    weatherType: weatherType;
-    foreCast: foreCast[];
-  }
+export interface WeatherBlend {
+  weatherType: WeatherType;
+  foreCast: ForeCast[];
+}
 
-  export interface foursquareType {
-    name: string;
-    cat: string;
-    coords: coords;
-    address: string;
-    icon: string;
-  }
+export interface FoursquareType {
+  name: string;
+  cat: string;
+  coords: Coords;
+  address: string;
+  icon: string;
+}

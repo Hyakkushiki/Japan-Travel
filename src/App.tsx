@@ -4,18 +4,18 @@ import './App.css';
 import { Tabs, Tab } from 'react-bootstrap';
 import GoogleMapsHolder from './components/GoogleMapsHolder';
 import WeatherComp from './components/weatherComp';
-import { cityType } from './interfaces';
+import { CityType } from './interfaces';
 
 
 function App() {
-  const [ currCity, setCurrCity ] = React.useState<cityType>({} as cityType);
+  const [ currCity, setCurrCity ] = React.useState<CityType>({} as CityType);
 
   React.useEffect(() => {
     console.log('Parent Effect fired ....');
     console.log(currCity);
   },[currCity]);
 
-  const sendDataToParent = (citi: cityType) => {
+  const sendDataToParent = (citi: CityType) => {
     console.log('sendDataToParent callback fired ....');
     console.log(citi);
     setCurrCity(citi);

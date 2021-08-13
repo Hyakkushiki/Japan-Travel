@@ -1,10 +1,11 @@
 import React from "react";
 import { GoogleMap, Marker, InfoWindow, useLoadScript } from "@react-google-maps/api";
-import { cityType, coords, foreCast, foursquareType, weatherType } from "../interfaces";
+import { CityType, Coords, ForeCast, FoursquareType, WeatherType } from "../interfaces";
 import { mapStyles } from "../mapStyles";
 import WeatherBox from "./WeatherBox";
 import { nanoid } from 'nanoid';
 import { newCallFourSquare, OrigOneCallForecast } from "./apiCalls";
+import _ from "lodash";
 
 const libraries: any = ["places"];
 const googleMapsApiKey: any = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -39,8 +40,8 @@ export default function GoogleMapsHolder(props: PropsInterface) {
     zoomControl: true,
   };
 
-  const tokyoCoords: coords = { lat: 35.689499, lng: 139.691711 };
-  const startingCities: cityType[] = [ 
+  const tokyoCoords: Coords = { lat: 35.689499, lng: 139.691711 };
+  const startingCities: CityType[] = [ 
     { coords: { lat: 35.689499, lng: 139.691711 }, name: "Tokyo" },
     { coords: { lat: 35.447781, lng: 139.642502 }, name: "Yokohama" },
     { coords: { lat: 35.021069, lng: 135.753845 }, name: "Kyoto" },
@@ -50,32 +51,35 @@ export default function GoogleMapsHolder(props: PropsInterface) {
   ];
 
   // const [error, setError] = React.useState<any>(null);
-  const [ citiesList, setCitiesList ] = React.useState<cityType[]>(startingCities);
-  const [ selectedCity, setSelectedCity ] = React.useState<cityType>({} as cityType);
-  const [apiWeathers, setApiWeathers] = React.useState<weatherType>({} as weatherType);
-  const [apiForecast, setApiForecast] = React.useState<foreCast[]>([]);
-  const [foursquareItems, setFoursquareItems] = React.useState<foursquareType[]>({} as foursquareType[]);
-
+  const [ citiesList, setCitiesList ] = React.useState<CityType[]>(startingCities);
+  const [ selectedCity, setSelectedCity ] = React.useState<CityType>({} as CityType);
+  const [apiWeathers, setApiWeathers] = React.useState<WeatherType>({} as WeatherType);
+  const [apiForecast, setApiForecast] = React.useState<ForeCast[]>([]);
+  const [foursquareItems, setFoursquareItems] = React.useState<FoursquareType[]>({} as FoursquareType[]);
 
 
   React.useEffect(() => {
     console.log('selected city has changed');
     console.log(selectedCity);
-    if (selectedCity !== {} as cityType) {
+
+    if (!_.isEmpty(selectedCity)) {
+      selectedCity.currWeather = apiWeathers;
+      selectedCity.foreCast = apiForecast;
+      selectedCity.foursquarePlaces = foursquareItems;
+
       props.theCity(selectedCity);
     }
     
-    // setSelectedCity(preCity);
-  }, [selectedCity])
+  }, [selectedCity]);
 
   React.useEffect(() => {
-  if(citiesList.length > 7) {
-    const p = citiesList.pop();
-  }
-  console.log(selectedCity);
-}, [citiesList])
+    if(citiesList.length > 7) {
+      const p = citiesList.pop();
+    }
+    console.log(selectedCity);
+  }, [citiesList]);
 
-async function oneCallForecast(coords: coords | null) {
+async function oneCallForecast(coords: Coords | null) {
   const weatherObjPromise = OrigOneCallForecast(coords, null);
     // console.log(weatherObjPromise);
 
@@ -93,7 +97,7 @@ async function oneCallForecast(coords: coords | null) {
       return baba;
 }
 
-async function callFourSquare(coords: coords, query?: string, locale?: string) {
+async function callFourSquare(coords: Coords, query?: string, locale?: string) {
   const fSObjPromise = newCallFourSquare(coords, query, locale);
   const fsCall = await fSObjPromise
   .then((result) => {
@@ -103,7 +107,7 @@ async function callFourSquare(coords: coords, query?: string, locale?: string) {
   console.log('fsCall value: ');
   console.log(fsCall);
   
-  setFoursquareItems(fsCall);
+  // await setFoursquareItems(fsCall);
   return fsCall;
 }
 
@@ -111,7 +115,7 @@ async function callFourSquare(coords: coords, query?: string, locale?: string) {
     console.log('onMapClicked func is called!');
     console.log({lat: event.latLng.lat(), lng: event.latLng.lng()});
     // setCitiesList(... citiesList, selectedCity);
-    const city = {} as cityType;
+    const city = {} as CityType;
     city.name = "user";
     city.coords = {lat: event.latLng.lat(), lng: event.latLng.lng()};
      setCitiesList(startingCities.concat(city));
@@ -142,17 +146,12 @@ async function callFourSquare(coords: coords, query?: string, locale?: string) {
                   title={preCity.name}
 
                   onClick={async () => {
-                    
-                    await oneCallForecast(preCity.coords);
-                    await callFourSquare(preCity.coords);
+                    await oneCallForecast(preCity.coords); // check if objects are empty or amount of time passed bfore called api again
+                    await callFourSquare(preCity.coords); // ^ same
  
-                    preCity.currWeather = apiWeathers;
-                    preCity.foreCast = apiForecast;
-                    preCity.foursquarePlaces = foursquareItems;
                     setSelectedCity(preCity);
-                    // props.theCity(selectedCity);
 
-                    const newCitisArray: cityType[] = citiesList.map((obj) => {
+                    const newCitisArray: CityType[] = citiesList.map((obj) => {
                       if (obj.coords === preCity.coords) {
                         obj = preCity;
                       }
@@ -165,11 +164,11 @@ async function callFourSquare(coords: coords, query?: string, locale?: string) {
                 />
               ))}
 
-            { !!selectedCity && !!selectedCity.currWeather ? (
+            { !!selectedCity && !_.isEmpty(selectedCity.currWeather) ? (
                 <InfoWindow
                   position={ selectedCity.coords }
                   onCloseClick={() => {
-                    setSelectedCity({} as cityType);
+                    setSelectedCity({} as CityType);
                   }}
                 >
                   <div>

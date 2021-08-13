@@ -1,8 +1,8 @@
 import { Card, Container } from "react-bootstrap";
-import { weatherType } from "../interfaces";
+import { WeatherType } from "../interfaces";
 
 
-export default function WeatherBox(props: weatherType) {
+export default function WeatherBox(props: WeatherType) {
 
   return (
     <Container
@@ -31,7 +31,7 @@ export default function WeatherBox(props: weatherType) {
             variant="top"
             // src={props.icon}
             src={'http://openweathermap.org/img/wn/' + props.icon + '@2x.png'}
-            // style={{ border: "1px solid #ddd" }}
+            style={{ height: "20vh", border: "1px solid #ddd" }}
           />
           <small className="text-muted description">
             {props.description}
